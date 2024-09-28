@@ -1,7 +1,6 @@
 import React from 'react';
 import { Avatar, Grid, Paper, Typography, Button, LinearProgress } from '@mui/material';
 import { Box } from '@mui/system';
-
 const first = () => {
   return (
     <Box sx={{ padding: '20px', backgroundColor: '#f5f5f5' }}>
@@ -14,7 +13,6 @@ const first = () => {
             sx={{ width: 150, height: 150 }}
           />
         </Grid>
-
         {/* Right section - Information card */}
         <Grid item xs={12} md={9}>
           <Paper elevation={3} sx={{ padding: '20px' }}>
@@ -24,23 +22,19 @@ const first = () => {
             <Typography variant="body1" gutterBottom>
               I have rich experience in website design, building, and customization. Also, I am good at WordPress.
             </Typography>
-
             <Button variant="contained" color="error" sx={{ mt: 2, mb: 3 }}>
               Download CV
             </Button>
-
             {/* Skill Bars */}
             <Box>
               <Typography variant="body1" gutterBottom>
                 Development
               </Typography>
               <LinearProgress variant="determinate" value={90} sx={{ mb: 2 }} color="warning" />
-
               <Typography variant="body1" gutterBottom>
                 UI/UX Design
               </Typography>
               <LinearProgress variant="determinate" value={80} sx={{ mb: 2 }} color="error" />
-
               <Typography variant="body1" gutterBottom>
                 Photography
               </Typography>
@@ -49,7 +43,6 @@ const first = () => {
           </Paper>
         </Grid>
       </Grid>
-
       {/* Bottom section - Statistics */}
       <Grid container spacing={4} sx={{ mt: 4 }} justifyContent="center">
         <Grid item xs={3}>
@@ -72,5 +65,4 @@ const first = () => {
     </Box>
   );
 };
-
 export default first;

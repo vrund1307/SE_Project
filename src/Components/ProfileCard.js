@@ -1,20 +1,20 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-
 const ProfileCard = ({ heading, info }) => {
   return (
     <Card 
       variant="outlined"
       sx={{
-        width: 180, // Fixed width for uniformity
-        height: 100, // Fixed height for uniformity
+        width: 180, 
+        height: 100, 
         margin: 1,
-        borderRadius: 3, // Applies rounded corners
-        background: 'linear-gradient(135deg, #ffeb3b, #f57f17)', // Yellow to dark orange gradient
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Smooth transition on hover
+        borderRadius: 3, 
+        background: '#fff',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease, background 0.3s',
         '&:hover': {
-          transform: 'scale(1.05)', // Slightly enlarge the card on hover
-          boxShadow: '0px 6px 12px rgba(0,0,0,0.3)', // Increase shadow on hover
+          transform: 'scale(1.05)', 
+          background: 'linear-gradient(135deg, #1976d2, #42a5f5)', 
+          boxShadow: '0px 6px 12px rgba(0,0,0,0.3)',
         }
       }}
     >
@@ -29,5 +29,4 @@ const ProfileCard = ({ heading, info }) => {
     </Card>
   );
 };
-
 export default ProfileCard;

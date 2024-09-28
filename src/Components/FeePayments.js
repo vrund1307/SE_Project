@@ -1,102 +1,57 @@
-import React from 'react';
-import { Grid, Box, Typography, Button, Card, CardContent, Avatar, MenuItem, FormControl, Select, InputLabel } from '@mui/material';
-import SchoolIcon from '@mui/icons-material/School';
-import HomeIcon from '@mui/icons-material/Home';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import React, { useState } from 'react';
+import { Grid, Typography, Fab, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import PaymentIcon from '@mui/icons-material/Payment';
+import FeeCard from './FeeCard'; // Ensure you have this import
 
 const FeePayments = () => {
-  const [selectedFee, setSelectedFee] = React.useState('');
+  const [semester, setSemester] = useState('');
 
-  const handleFeeChange = (event) => {
-    setSelectedFee(event.target.value);
+  const handleSemesterChange = (event) => {
+    setSemester(event.target.value);
   };
 
+  const fees = [
+    { id: 1, type: 'Tuition', remainingDays: 15, icon: 'school' },
+    { id: 2, type: 'Hostel', remainingDays: 30, icon: 'house' },
+    { id: 3, type: 'Medical', remainingDays: 5, icon: 'local_hospital' },
+  ];
+
   return (
-    <Box sx={{ padding: 4, textAlign: 'center' }}>
-      {/* Fee Payments Heading */}
-      <Typography variant="h4" sx={{ marginBottom: 3, fontWeight: 'bold' }}>
-        Fee Payments
+    <div style={{ padding: '20px', backgroundColor: '#f0f4f8', minHeight: '100vh' }}>
+      <Typography variant="h4" gutterBottom textAlign="center">
+        Fee Payment
       </Typography>
 
-      {/* Dropdown in the Middle */}
-      <FormControl sx={{ minWidth: 200, marginBottom: 5 }}>
-        <InputLabel id="fee-select-label">Select Fee Type</InputLabel>
+      <FormControl fullWidth style={{ marginBottom: '20px', display: 'flex', alignItems: 'center' }}>
+        {/* <InputLabel id="semester-select-label">Select Semester</InputLabel> */}
         <Select
-          labelId="fee-select-label"
-          id="fee-select"
-          value={selectedFee}
-          label="Select Fee Type"
-          onChange={handleFeeChange}
+          labelId="semester-select-label"
+          value={semester}
+          onChange={handleSemesterChange}
+          style={{ width: '300px', textAlign: 'center' }} // Center the dropdown
         >
-          <MenuItem value="tuition">Tuition Fee</MenuItem>
-          <MenuItem value="hostel">Hostel Fee</MenuItem>
-          <MenuItem value="medical">Medical Fee</MenuItem>
+          <MenuItem value={1}>Semester 1</MenuItem>
+          <MenuItem value={2}>Semester 2</MenuItem>
+          <MenuItem value={3}>Semester 3</MenuItem>
         </Select>
       </FormControl>
 
-      {/* Cards Section */}
       <Grid container spacing={3} justifyContent="center">
-        {/* Tuition Fee Card */}
-        <Grid item xs={12} sm={4}>
-          <Card sx={{ boxShadow: 3 }}>
-            <CardContent>
-              <Avatar sx={{ bgcolor: '#1976d2', margin: '0 auto', marginBottom: 2 }}>
-                <SchoolIcon />
-              </Avatar>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 2 }}>
-                Tuition Fee
-              </Typography>
-              <Typography variant="body2" sx={{ marginBottom: 2 }}>
-                Pay your tuition fees conveniently online.
-              </Typography>
-              <Button variant="contained" sx={{ backgroundColor: '#1976d2', color: '#fff' }}>
-                Pay Now
-              </Button>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Hostel Fee Card */}
-        <Grid item xs={12} sm={4}>
-          <Card sx={{ boxShadow: 3 }}>
-            <CardContent>
-              <Avatar sx={{ bgcolor: '#1976d2', margin: '0 auto', marginBottom: 2 }}>
-                <HomeIcon />
-              </Avatar>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 2 }}>
-                Hostel Fee
-              </Typography>
-              <Typography variant="body2" sx={{ marginBottom: 2 }}>
-                Secure your hostel accommodation by paying the fee.
-              </Typography>
-              <Button variant="contained" sx={{ backgroundColor: '#1976d2', color: '#fff' }}>
-                Pay Now
-              </Button>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Medical Fee Card */}
-        <Grid item xs={12} sm={4}>
-          <Card sx={{ boxShadow: 3 }}>
-            <CardContent>
-              <Avatar sx={{ bgcolor: '#1976d2', margin: '0 auto', marginBottom: 2 }}>
-                <LocalHospitalIcon />
-              </Avatar>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 2 }}>
-                Medical Fee
-              </Typography>
-              <Typography variant="body2" sx={{ marginBottom: 2 }}>
-                Ensure access to medical facilities by paying the medical fee.
-              </Typography>
-              <Button variant="contained" sx={{ backgroundColor: '#1976d2', color: '#fff' }}>
-                Pay Now
-              </Button>
-            </CardContent>
-          </Card>
-        </Grid>
+        {fees.map(fee => (
+          <Grid item xs={12} md={4} key={fee.id}>
+            <FeeCard fee={fee} />
+          </Grid>
+        ))}
       </Grid>
-    </Box>
+
+      <Fab
+        color="primary"
+        aria-label="pay"
+        style={{ position: 'fixed', bottom: '20px', right: '20px' }}
+      >
+        <PaymentIcon />
+      </Fab>
+    </div>
   );
 };
 

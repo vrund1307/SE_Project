@@ -1,54 +1,82 @@
 import React from 'react';
-import { Grid, Box, Avatar, Typography, Divider } from '@mui/material';
+import { Grid, Box, Avatar, Typography, Divider, Card } from '@mui/material';
 import ProfileCard from './ProfileCard';
 
 const Second = () => {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', padding: 4 }}>
-      
-      {/* Profile Photo and Name on the Left */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 4 }}>
+    <Box sx={{ display: 'flex', alignItems: 'flex-start', padding: 4 }}>
+      {/* Profile Card with Avatar */}
+      <Card 
+        variant="outlined" 
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 2,
+          marginRight: 5,  // Increased margin to push cards further right
+          borderRadius: 3,
+          boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.3)',
+          backgroundColor: '#f5f5f5',
+          border: '1px solid #1976d2',
+          transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+          '&:hover': {
+            transform: 'scale(1.05)',
+            boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.4)',
+          }
+        }}
+      >
         <Avatar 
           alt="Profile Picture" 
-          src="path_to_your_image" // Path to your round profile image
+          src="path_to_your_image" // Replace with actual image path
           sx={{
-            width: 180, // Reduced photo size
+            width: 180, 
             height: 180,
-            border: '4px solid #1976d2', // Blue border around the profile picture
-            borderRadius: '50%', // Ensuring the picture is round
-            boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.3)' // More prominent shadow
+            border: '4px solid #1976d2', 
+            borderRadius: '50%', 
+            boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.3)' 
           }} 
         />
-        <Typography variant="h6" sx={{ marginTop: 2, fontWeight: 'bold' }}>
-          John Doe {/* Replace with the actual name */}
+        <Typography variant="h6" sx={{ marginTop: 1, fontWeight: 'bold' }}>
+          John Doe
         </Typography>
-      </Box>
+        <Typography variant="body2" sx={{ color: '#555', marginTop: 0.5 }}>
+          Student
+        </Typography>
+      </Card>
 
-      {/* Divider between photo and cards */}
-      <Divider orientation="vertical" flexItem sx={{ marginLeft: 3, marginRight: 3, height: 'auto', borderWidth: '1px', borderColor: '#b0bec5' }} />
+      {/* Divider with margin adjustments */}
+      <Divider 
+        orientation="vertical" 
+        flexItem 
+        sx={{ marginLeft: 3, marginRight: 3, height: 'auto', borderWidth: '1px', borderColor: '#b0bec5' }} 
+      />
 
-      {/* Cards Section on the Right */}
-      <Grid container spacing={2} sx={{ maxWidth: 600 }}> {/* Adjusted for 3 cards per row */}
-        {/* First Row of 3 Cards */}
-        <Grid item xs={4}>
-          <ProfileCard heading="Age" info="51 years (26 Mar 1973)" />
+      {/* Profile Information Cards */}
+      <Grid container spacing={1} sx={{ maxWidth: 900, marginLeft: 4 }}>  {/* Increased marginLeft to move cards further right */}
+        <Grid item xs={3}>
+          <ProfileCard heading="Age" info="51 years" />
         </Grid>
-        <Grid item xs={4}>
-          <ProfileCard heading="Net worth" info="13,510 crores USD (2024)" />
+        <Grid item xs={3}>
+          <ProfileCard heading="Net Worth" info="13,510 crores USD" />
         </Grid>
-        <Grid item xs={4}>
-          <ProfileCard heading="Some Other Info" info="Details here" />
+        <Grid item xs={3}>
+          <ProfileCard heading="Position" info="CEO" />
         </Grid>
-
-        {/* Second Row of 3 Cards */}
-        <Grid item xs={4}>
-          <ProfileCard heading="Another Info" info="More details" />
+        <Grid item xs={3}>
+          <ProfileCard heading="Location" info="California, USA" />
         </Grid>
-        <Grid item xs={4}>
-          <ProfileCard heading="Additional Info" info="Some additional info" />
+        <Grid item xs={3}>
+          <ProfileCard heading="Years Active" info="25 Years" />
         </Grid>
-        <Grid item xs={4}>
-          <ProfileCard heading="Final Info" info="Final piece of information" />
+        <Grid item xs={3}>
+          <ProfileCard heading="Last Promotion" info="2022" />
+        </Grid>
+        <Grid item xs={3}>
+          <ProfileCard heading="Major" info="Computer Science" />
+        </Grid>
+        <Grid item xs={3}>
+          <ProfileCard heading="GPA" info="3.9" />
         </Grid>
       </Grid>
     </Box>
