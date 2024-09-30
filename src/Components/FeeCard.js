@@ -38,6 +38,10 @@ const FeeCard = ({ fee }) => {
         </div>
         <Typography variant="body1" color="textSecondary">{fee.remainingDays} days remaining</Typography>
       </CardContent>
+      <Typography variant="h5" style={{ margin: '10px 0' }}>Amount: ${fee.amount}</Typography>
+      <Typography variant="body2" color="textSecondary" style={{ marginBottom: '10px' }}>
+        {fee.details}
+      </Typography>
       <Button variant="contained" color="primary" onClick={handlePayment} style={{ margin: '10px 0', width: '100%', transition: 'background 0.3s ease' }}>
         Pay Now
       </Button>
